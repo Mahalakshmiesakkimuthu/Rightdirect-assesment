@@ -1,3 +1,4 @@
+
 ---
 import {
   Lightbulb,
@@ -80,10 +81,6 @@ const { workCards } = Astro.props;
 
 <style>
 
-  /* ========================================
-     WORK SECTION
-     ======================================== */
-
   .work {
     width: 100%;
     max-width: 100%;
@@ -93,11 +90,6 @@ const { workCards } = Astro.props;
     box-sizing: border-box;
   }
 
-
-  /* ========================================
-     CONTAINER
-     ======================================== */
-
   .work-container {
     width: 100%;
     max-width: 1250px;
@@ -105,11 +97,6 @@ const { workCards } = Astro.props;
     padding: 75px 40px;
     box-sizing: border-box;
   }
-
-
-  /* ========================================
-     HEADER
-     ======================================== */
 
   .work-header {
     width: 100%;
@@ -126,11 +113,6 @@ const { workCards } = Astro.props;
     line-height: 1.4;
   }
 
-
-  /* ========================================
-     GRID
-     ======================================== */
-
   .work-grid {
     width: 100%;
     display: grid;
@@ -139,11 +121,6 @@ const { workCards } = Astro.props;
     box-sizing: border-box;
     align-items: stretch;
   }
-
-
-  /* ========================================
-     CARD
-     ======================================== */
 
   .work-card {
     position: relative;
@@ -181,11 +158,6 @@ const { workCards } = Astro.props;
       0 14px 32px rgba(10, 34, 64, 0.14);
   }
 
-
-  /* ========================================
-     TOP
-     ======================================== */
-
   .work-top {
     width: 100%;
 
@@ -215,11 +187,6 @@ const { workCards } = Astro.props;
     flex-shrink: 0;
   }
 
-
-  /* ========================================
-     ICON
-     ======================================== */
-
   .work-icon {
     width: 42px;
     height: 42px;
@@ -245,11 +212,6 @@ const { workCards } = Astro.props;
     display: block;
   }
 
-
-  /* ========================================
-     TITLE
-     ======================================== */
-
   .work-card h3 {
     margin: 24px 0 12px;
 
@@ -261,11 +223,6 @@ const { workCards } = Astro.props;
 
     overflow-wrap: anywhere;
   }
-
-
-  /* ========================================
-     DESCRIPTION
-     ======================================== */
 
   .work-description {
     margin: 0 0 18px;
@@ -279,18 +236,15 @@ const { workCards } = Astro.props;
     word-break: normal;
   }
 
-
-  /* ========================================
-     CTA
-     ======================================== */
-
   .work-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
 
     width: fit-content;
     max-width: 100%;
 
     margin-top: auto;
+    padding: 4px 0;
 
     color: #07579d;
 
@@ -300,7 +254,14 @@ const { workCards } = Astro.props;
 
     text-decoration: none;
 
+    visibility: visible;
+    opacity: 1;
+
+    position: relative;
+    z-index: 2;
+
     overflow-wrap: anywhere;
+    word-break: break-word;
 
     transition:
       transform 0.2s ease,
@@ -311,11 +272,6 @@ const { workCards } = Astro.props;
     color: #004681;
     transform: translateX(4px);
   }
-
-
-  /* ========================================
-     IMAGE
-     ======================================== */
 
   .work-image {
     display: block;
@@ -335,10 +291,6 @@ const { workCards } = Astro.props;
   }
 
 
-  /* ========================================
-     TABLET
-     ======================================== */
-
   @media screen and (max-width: 1000px) {
 
     .work-container {
@@ -356,11 +308,6 @@ const { workCards } = Astro.props;
 
   }
 
-
-  /* ========================================
-     MOBILE
-     ======================================== */
-
   @media screen and (max-width: 600px) {
 
     .work {
@@ -376,20 +323,11 @@ const { workCards } = Astro.props;
 
       margin: 0;
 
-      /*
-        Extra top space prevents the
-        first number from touching/clipping
-        against the viewport/header.
-      */
       padding: 64px 16px 45px;
 
       box-sizing: border-box;
     }
 
-
-    /* -------------------------------
-       HEADER
-       ------------------------------- */
 
     .work-header {
       width: 100%;
@@ -403,11 +341,6 @@ const { workCards } = Astro.props;
       font-size: 16px;
       line-height: 1.4;
     }
-
-
-    /* -------------------------------
-       ONE COLUMN
-       ------------------------------- */
 
     .work-grid {
       width: 100%;
@@ -425,19 +358,11 @@ const { workCards } = Astro.props;
     }
 
 
-    /* -------------------------------
-       CARD
-       ------------------------------- */
-
     .work-card {
       width: 100%;
       max-width: 100%;
       min-width: 0;
 
-      /*
-        Force every card into one
-        complete row.
-      */
       grid-column: auto;
 
       padding: 20px;
@@ -446,25 +371,11 @@ const { workCards } = Astro.props;
 
       box-sizing: border-box;
 
-      /*
-        Prevent content from visually
-        escaping the card.
-      */
-      overflow: hidden;
+      overflow: visible;
 
-      /*
-        Important:
-        card height must grow naturally.
-      */
       height: auto;
       min-height: 0;
     }
-
-
-    /* -------------------------------
-       TOP
-       ------------------------------- */
-
     .work-top {
       width: 100%;
 
@@ -478,9 +389,6 @@ const { workCards } = Astro.props;
     }
 
 
-    /* -------------------------------
-       NUMBER
-       ------------------------------- */
 
     .work-number {
       font-size: 40px;
@@ -490,10 +398,6 @@ const { workCards } = Astro.props;
       flex-shrink: 0;
     }
 
-
-    /* -------------------------------
-       ICON
-       ------------------------------- */
 
     .work-icon {
       width: 40px;
@@ -511,10 +415,6 @@ const { workCards } = Astro.props;
     }
 
 
-    /* -------------------------------
-       TITLE
-       ------------------------------- */
-
     .work-card h3 {
       margin: 22px 0 12px;
 
@@ -523,10 +423,6 @@ const { workCards } = Astro.props;
       line-height: 1.35;
     }
 
-
-    /* -------------------------------
-       DESCRIPTION
-       ------------------------------- */
 
     .work-description {
       margin: 0 0 18px;
@@ -540,22 +436,28 @@ const { workCards } = Astro.props;
     }
 
 
-    /* -------------------------------
-       LINK
-       ------------------------------- */
-
     .work-link {
+      display: inline-flex;
+
+      width: fit-content;
+      max-width: 100%;
+
       margin-top: 0;
+      padding: 4px 0;
 
       font-size: 14px;
 
       line-height: 1.5;
+
+      visibility: visible;
+      opacity: 1;
+
+      position: relative;
+      z-index: 2;
+
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
-
-
-    /* -------------------------------
-       IMAGE
-       ------------------------------- */
 
     .work-image {
       width: 100%;
@@ -576,10 +478,6 @@ const { workCards } = Astro.props;
 
   }
 
-
-  /* ========================================
-     SMALL MOBILE
-     ======================================== */
 
   @media screen and (max-width: 380px) {
 
@@ -637,7 +535,15 @@ const { workCards } = Astro.props;
 
 
     .work-link {
+      display: inline-flex;
+
+      width: fit-content;
+      max-width: 100%;
+
       font-size: 13px;
+
+      visibility: visible;
+      opacity: 1;
     }
 
 
@@ -651,10 +557,6 @@ const { workCards } = Astro.props;
 
   }
 
-
-  /* ========================================
-     VERY SMALL PHONES
-     ======================================== */
 
   @media screen and (max-width: 320px) {
 
@@ -679,6 +581,10 @@ const { workCards } = Astro.props;
       font-size: 13px;
     }
 
+    .work-link {
+      font-size: 13px;
+    }
+
     .work-image {
       height: 145px;
     }
@@ -686,3 +592,4 @@ const { workCards } = Astro.props;
   }
 
 </style>
+
