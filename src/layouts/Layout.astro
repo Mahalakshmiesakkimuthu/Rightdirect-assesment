@@ -6,7 +6,12 @@ const { title = "RightDirect" } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
     <title>{title}</title>
   </head>
 
@@ -16,8 +21,30 @@ const { title = "RightDirect" } = Astro.props;
 </html>
 
 <style is:global>
-  body {
-    font-family: Arial, sans-serif;
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    width: 100%;
     margin: 0;
+    padding: 0;
+  }
+
+  body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+    overflow-x: hidden;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 </style>
