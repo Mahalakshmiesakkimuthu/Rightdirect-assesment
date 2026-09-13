@@ -1,95 +1,166 @@
 ---
-import { Lightbulb, Code2, Send, Grid2X2 } from "lucide-astro";
+import {
+  Lightbulb,
+  Code2,
+  Send,
+  Grid2X2
+} from "lucide-astro";
 
 const { workCards } = Astro.props;
 ---
 
 <section class="work">
-  <div class="work-header">
-    <p>Work</p>
-  </div>
 
-  <div class="work-grid">
-    {workCards?.map((card, index) => (
-      <article class="work-card">
+  <div class="work-container">
 
-        <div class="work-top">
-          <span>{card.number}</span>
+    <div class="work-header">
+      <p>Work</p>
+    </div>
 
-          <div class="work-icon">
-            {index === 0 ? (
-              <Lightbulb size={22} />
-            ) : index === 1 ? (
-              <Code2 size={22} />
-            ) : index === 2 ? (
-              <Send size={22} />
-            ) : (
-              <Grid2X2 size={22} />
-            )}
+    <div class="work-grid">
+
+      {workCards?.map((card, index) => (
+
+        <article class="work-card">
+
+          <div class="work-top">
+
+            <span class="work-number">
+              {card.number}
+            </span>
+
+            <div class="work-icon">
+
+              {index === 0 && (
+                <Lightbulb />
+              )}
+
+              {index === 1 && (
+                <Code2 />
+              )}
+
+              {index === 2 && (
+                <Send />
+              )}
+
+              {index >= 3 && (
+                <Grid2X2 />
+              )}
+
+            </div>
+
           </div>
-        </div>
 
-        <h3>{card.title}</h3>
+          <h3>
+            {card.title}
+          </h3>
 
-        <p>{card.description}</p>
+          <p>
+            {card.description}
+          </p>
 
-        <a href="#">{card.cta}</a>
+          <a href="#">
+            {card.cta}
+          </a>
 
-        {card.imageUrl && (
-          <img
-            src={card.imageUrl}
-            alt={card.title}
-            class="work-image"
-          />
-        )}
 
-      </article>
-    ))}
+          {card.imageUrl && (
+            <img
+              src={card.imageUrl}
+              alt={card.title}
+              class="work-image"
+              loading="lazy"
+            />
+          )}
+
+        </article>
+
+      ))}
+
+    </div>
+
   </div>
+
 </section>
 
+
 <style>
+
 .work {
   width: 100%;
-  padding: 80px 5%;
-  box-sizing: border-box;
+
   background: #f7faff;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
 }
 
+.work-container {
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  padding: 75px 40px;
+
+  box-sizing: border-box;
+}
+
+
 .work-header {
+  width: 100%;
+
+  margin-bottom: 42px;
+
   text-align: center;
-  margin-bottom: 45px;
 }
 
 .work-header p {
   margin: 0;
+
   color: #07579d;
+
   font-size: 18px;
+
   font-weight: 600;
 }
 
+
 .work-grid {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+
   box-sizing: border-box;
 }
 
 .work-card {
   position: relative;
-  min-height: 180px;
+
   width: 100%;
-  padding: 25px 22px;
-  box-sizing: border-box;
+  min-width: 0;
+
+  padding: 22px;
 
   background: white;
-  border: 1px solid #e5edf5;
-  border-radius: 18px;
 
-  box-shadow: 0 8px 25px rgba(10, 34, 64, 0.08);
+  border: 1px solid #e5edf5;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 7px 22px rgba(10, 34, 64, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
 
   transition:
     transform 0.3s ease,
@@ -98,141 +169,231 @@ const { workCards } = Astro.props;
 
 .work-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(10, 34, 64, 0.14);
+
+  box-shadow:
+    0 14px 32px rgba(10, 34, 64, 0.14);
 }
 
+
 .work-top {
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  gap: 10px;
 }
 
-.work-top > span {
+.work-number {
   color: #b8ddf2;
-  font-size: 48px;
+
+  font-size: 42px;
+
   line-height: 1;
+
   font-weight: 700;
 }
 
 .work-icon {
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  border-radius: 50%;
+
+  background: #e8f0f6;
+
+  color: #005a9c;
 
   display: flex;
   align-items: center;
   justify-content: center;
-
-  flex-shrink: 0;
-
-  border-radius: 50%;
-  background: #e8f0f6;
-  color: #005a9c;
 }
 
+.work-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+
 .work-card h3 {
-  margin: 28px 0 14px;
+  margin: 24px 0 12px;
 
   color: #0a2240;
-  font-size: 22px;
+
+  font-size: 19px;
   line-height: 1.3;
+
   font-weight: 600;
 }
 
+
 .work-card p {
-  margin: 0 0 22px;
+  margin: 0 0 18px;
 
   color: #526273;
-  font-size: 15px;
+
+  font-size: 14px;
+
   line-height: 1.6;
+
+  overflow-wrap: anywhere;
 }
+
 
 .work-card a {
   display: inline-block;
 
+  width: fit-content;
+
+  margin-top: auto;
+
   color: #07579d;
-  font-size: 15px;
+
+  font-size: 14px;
+
   font-weight: 600;
+
   text-decoration: none;
 
-  transition: transform 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .work-card a:hover {
+  color: #004681;
+
   transform: translateX(4px);
 }
 
+
+
 .work-image {
   width: 100%;
-  height: 130px;
-  object-fit: cover;
-  margin-top: 25px;
-  border-radius: 12px;
+  height: 125px;
+
+  margin-top: 22px;
+
   display: block;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+
+  box-sizing: border-box;
 }
 
 
-/* Tablet */
-@media (max-width: 900px) {
-  .work {
-    padding: 65px 5%;
+@media (max-width: 1000px) {
+
+  .work-container {
+    padding: 65px 30px;
   }
 
   .work-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
   }
+
 }
 
 
-/* Mobile */
+
 @media (max-width: 600px) {
-  .work {
-    width: 100%;
+
+  .work-container {
     padding: 55px 20px;
-    box-sizing: border-box;
+  }
+
+  .work-header {
+    margin-bottom: 28px;
+  }
+
+  .work-header p {
+    font-size: 16px;
   }
 
   .work-grid {
-    display: grid;
     width: 100%;
-    grid-template-columns: 1fr !important;
-    gap: 20px;
-    box-sizing: border-box;
+
+    grid-template-columns: minmax(0, 1fr) !important;
+
+    gap: 18px;
   }
 
   .work-card {
     width: 100%;
     min-width: 0;
-    min-height: 200px;
-    padding: 25px;
-    box-sizing: border-box;
+
+    padding: 20px;
+
+    border-radius: 14px;
   }
 
-  .work-header {
-    margin-bottom: 30px;
-  }
-
-  .work-top > span {
-    font-size: 42px;
+  .work-number {
+    font-size: 40px;
   }
 
   .work-icon {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
+
+    flex-basis: 40px;
   }
 
   .work-card h3 {
-    font-size: 21px;
+    margin-top: 22px;
+
+    font-size: 19px;
   }
 
   .work-card p {
-    overflow-wrap: break-word;
+    font-size: 14px;
+
+    line-height: 1.65;
   }
 
   .work-image {
     width: 100%;
-    height: 160px;
-    object-fit: cover;
+    height: 180px;
+
+    margin-top: 20px;
   }
+
 }
+
+
+@media (max-width: 380px) {
+
+  .work-container {
+    padding: 45px 16px;
+  }
+
+  .work-card {
+    padding: 17px;
+  }
+
+  .work-number {
+    font-size: 36px;
+  }
+
+  .work-card h3 {
+    font-size: 18px;
+  }
+
+  .work-card p {
+    font-size: 13px;
+  }
+
+  .work-image {
+    height: 160px;
+  }
+
+}
+
 </style>

@@ -2,13 +2,16 @@
 const { navItems, logo, workCards } = Astro.props;
 ---
 
-<header>
+<header class="site-header">
   <div class="header-container">
 
     
-    <div class="logo">
-      <img src={logo?.asset?.url} alt="RightDirect" />
-    </div>
+    <a href="/" class="logo">
+      <img
+        src={logo?.asset?.url}
+        alt="RightDirect"
+      />
+    </a>
 
     
     <nav class="main-nav">
@@ -16,14 +19,14 @@ const { navItems, logo, workCards } = Astro.props;
         item.label === "Services" ? (
           <div class="dropdown">
 
-            <a href={item.url} class="services-link">
+            <a href={item.url} class="nav-link services-link">
               {item.label}
             </a>
 
             <div class="dropdown-menu">
               {workCards?.map((card) => (
-                <a href="#">
-                  <span>{card.title}</span>
+                <a href="#" class="dropdown-item">
+                  {card.title}
                 </a>
               ))}
             </div>
@@ -31,30 +34,58 @@ const { navItems, logo, workCards } = Astro.props;
           </div>
         ) : (
           <a
-  href={item.url}
-  class={item.label === "Get Started" ? "get-started" : ""}
->
-  {item.label}
-</a>
+            href={item.url}
+            class:list={[
+              "nav-link",
+              { "get-started": item.label === "Get Started" }
+            ]}
+          >
+            {item.label}
+          </a>
         )
       ))}
     </nav>
 
-
+    
     <details class="mobile-menu">
 
-      <summary class="menu-button" aria-label="Open menu">
+      <summary class="menu-button" aria-label="Open navigation menu">
         <span></span>
         <span></span>
         <span></span>
       </summary>
 
       <nav class="mobile-nav">
+
         {navItems?.map((item) => (
-          <a href={item.url}>
-            {item.label}
-          </a>
+          item.label === "Services" ? (
+            <div class="mobile-services">
+
+              <a href={item.url}>
+                {item.label}
+              </a>
+
+              <div class="mobile-services-list">
+                {workCards?.map((card) => (
+                  <a href="#">
+                    {card.title}
+                  </a>
+                ))}
+              </div>
+
+            </div>
+          ) : (
+            <a
+              href={item.url}
+              class:list={[
+                { "mobile-get-started": item.label === "Get Started" }
+              ]}
+            >
+              {item.label}
+            </a>
+          )
         ))}
+
       </nav>
 
     </details>
@@ -65,91 +96,99 @@ const { navItems, logo, workCards } = Astro.props;
 
 <style>
 
-header {
+.site-header {
   width: 100%;
-  background: white;
+  background: #ffffff;
+  border-bottom: 1px solid #eef2f6;
+  position: relative;
+  z-index: 1000;
 }
 
-
-
-
 .header-container {
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  min-height: 76px;
 
-  padding: 20px 40px;
+  margin: 0 auto;
+  padding: 14px 40px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  position: relative;
+  box-sizing: border-box;
 }
 
 
 
+.logo {
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+
+  flex-shrink: 0;
+}
 
 .logo img {
   width: 150px;
+  height: auto;
   display: block;
 }
-
-
 
 
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 28px;
 }
 
-.main-nav > a,
+.nav-link,
 .services-link {
-  text-decoration: none;
-  color: #0a2240;
+  position: relative;
 
-  font-size: 15px;
+  color: #0a2240;
+  text-decoration: none;
+
+  font-size: 14px;
   font-weight: 500;
+
+  white-space: nowrap;
+
+  padding: 8px 4px;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
 }
 
-.main-nav > a:hover,
+.nav-link:hover,
 .services-link:hover {
-  background: #eaf3fa;
   color: #004681;
-
-  padding: 2px 5px;
-  border-radius: 5px;
 }
 
 .get-started {
-  background: #004681;
+  background: #004681 !important;
   color: white !important;
-  padding: 11px 20px;
+
+  padding: 11px 20px !important;
+
   border-radius: 30px;
-  text-decoration: none;
 }
 
 .get-started:hover {
-  background: #004681;
+  background: #00365f !important;
   color: white !important;
 }
-
-
 
 .dropdown {
   position: relative;
 }
 
-.services-link {
-  display: block;
-}
-
-
-
 .dropdown-menu {
   position: absolute;
 
-  top: 100%;
+  top: calc(100% + 8px);
   left: 50%;
 
   width: 280px;
@@ -158,19 +197,22 @@ header {
 
   background: white;
 
-  border: 1px solid #eef2f5;
+  border: 1px solid #e9eff4;
   border-radius: 12px;
 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 40px rgba(10, 34, 64, 0.12);
 
   opacity: 0;
   visibility: hidden;
 
-  transform: translate(-50%, 8px);
+  transform: translate(-50%, 10px);
 
-  transition: 0.2s ease;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.25s ease;
 
-  z-index: 1000;
+  z-index: 2000;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -180,36 +222,27 @@ header {
   transform: translate(-50%, 0);
 }
 
-
-
-.dropdown-menu a {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
+.dropdown-item {
+  display: block;
 
   padding: 12px 14px;
 
-  text-decoration: none;
-
   color: #0a2240;
 
-  border-radius: 8px;
+  text-decoration: none;
 
   font-size: 14px;
 
-  transition: 0.2s ease;
+  border-radius: 8px;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
-.dropdown-menu a:hover {
+.dropdown-item:hover {
   background: #eaf3fa;
   color: #004681;
-}
-
-
-.dropdown-menu a:hover .item-arrow {
-  color: #004681;
-  transform: translateX(3px);
 }
 
 
@@ -217,34 +250,154 @@ header {
   display: none;
 }
 
+.menu-button {
+  width: 34px;
+  height: 30px;
+
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  list-style: none;
+}
+
+.menu-button::-webkit-details-marker {
+  display: none;
+}
+
+.menu-button::marker {
+  display: none;
+}
+
+.menu-button span {
+  width: 100%;
+  height: 3px;
+
+  display: block;
+
+  background: #004681;
+
+  border-radius: 10px;
+
+  transition: 0.25s ease;
+}
+
+
+.mobile-nav {
+  position: absolute;
+
+  top: calc(100% + 1px);
+  left: 15px;
+  right: 15px;
+
+  width: auto;
+
+  padding: 12px;
+
+  background: white;
+
+  border: 1px solid #e8eef3;
+  border-radius: 14px;
+
+  box-shadow: 0 15px 40px rgba(10, 34, 64, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  z-index: 3000;
+}
+
+.mobile-nav > a,
+.mobile-services > a {
+  display: block;
+
+  padding: 13px 14px;
+
+  color: #0a2240;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  border-radius: 8px;
+
+  transition: 0.2s ease;
+}
+
+.mobile-nav > a:hover,
+.mobile-services > a:hover {
+  background: #eaf3fa;
+  color: #004681;
+}
+
+
+.mobile-services-list {
+  padding: 0 10px 8px 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobile-services-list a {
+  padding: 9px 10px;
+
+  color: #526273;
+
+  font-size: 13px;
+
+  text-decoration: none;
+
+  border-radius: 6px;
+}
+
+.mobile-services-list a:hover {
+  background: #f1f6fa;
+  color: #004681;
+}
+
+.mobile-get-started {
+  margin-top: 6px;
+
+  background: #004681 !important;
+  color: white !important;
+
+  text-align: center;
+}
+
 
 @media (max-width: 900px) {
 
   .header-container {
-    padding: 18px 25px;
-  }
-
-  .main-nav {
-    gap: 18px;
-  }
-
-  .main-nav > a,
-  .services-link {
-    font-size: 14px;
+    padding: 14px 25px;
   }
 
   .logo img {
-    width: 130px;
+    width: 135px;
+  }
+
+  .main-nav {
+    gap: 15px;
+  }
+
+  .nav-link,
+  .services-link {
+    font-size: 13px;
   }
 
 }
 
 
-
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
   .header-container {
-    padding: 16px 20px;
+    min-height: 68px;
+    padding: 13px 20px;
   }
 
   .logo img {
@@ -255,91 +408,27 @@ header {
     display: none;
   }
 
-
   .mobile-menu {
     display: block;
-
     position: relative;
   }
 
-  .menu-button {
-    width: 32px;
-    height: 28px;
+}
 
-    display: flex;
 
-    flex-direction: column;
-    justify-content: space-between;
+@media (max-width: 400px) {
 
-    cursor: pointer;
-
-    list-style: none;
+  .header-container {
+    padding: 12px 16px;
   }
 
-
-  .menu-button::-webkit-details-marker {
-    display: none;
+  .logo img {
+    width: 115px;
   }
-
-  .menu-button::marker {
-    display: none;
-  }
-
-
-  .menu-button span {
-    display: block;
-
-    width: 30px;
-    height: 3px;
-
-    background: #004681;
-
-    border-radius: 3px;
-  }
-
 
   .mobile-nav {
-    position: absolute;
-
-    top: 42px;
-    right: 0;
-
-    width: 250px;
-
-    background: white;
-
-    padding: 15px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
-
-    border: 1px solid #eef2f5;
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-
-    z-index: 2000;
-  }
-
-
-  .mobile-nav a {
-    padding: 12px 14px;
-
-    text-decoration: none;
-
-    color: #0a2240;
-
-    font-size: 15px;
-
-    border-radius: 6px;
-  }
-
-
-  .mobile-nav a:hover {
-    background: #eaf3fa;
-
-    color: #004681;
+    left: 10px;
+    right: 10px;
   }
 
 }
