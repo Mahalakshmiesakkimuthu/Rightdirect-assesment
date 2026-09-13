@@ -308,6 +308,34 @@ const { workCards } = Astro.props;
 
   }
 
+@media (max-width: 768px) {
+
+  .work {
+    padding: 55px 20px;
+  }
+
+  .work-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .work-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .work-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+}
+
   @media screen and (max-width: 600px) {
 
     .work {
