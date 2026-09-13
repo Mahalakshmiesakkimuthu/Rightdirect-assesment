@@ -1,0 +1,214 @@
+---
+import { Lightbulb, Code2, Send, Grid2X2 } from "lucide-astro";
+
+const { workCards } = Astro.props;
+---
+
+<section class="work">
+  <div class="work-header">
+    <p>Work</p>
+  </div>
+
+  <div class="work-grid">
+    {workCards?.map((card, index) => (
+      <article class="work-card">
+
+        <div class="work-top">
+          <span>{card.number}</span>
+
+          <div class="work-icon">
+            {index === 0 ? (
+              <Lightbulb size={22} />
+            ) : index === 1 ? (
+              <Code2 size={22} />
+            ) : index === 2 ? (
+              <Send size={22} />
+            ) : (
+              <Grid2X2 size={22} />
+            )}
+          </div>
+        </div>
+
+        <h3>{card.title}</h3>
+
+        <p>{card.description}</p>
+
+        <a href="#">{card.cta}</a>
+
+        {card.imageUrl && (
+          <img
+            src={card.imageUrl}
+            alt={card.title}
+            class="work-image"
+          />
+        )}
+
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+.work {
+  width: 100%;
+  padding: 80px 5%;
+  box-sizing: border-box;
+  background: #f7faff;
+}
+
+.work-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.work-header p {
+  margin: 0;
+  color: #07579d;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.work-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.work-card {
+  position: relative;
+  min-height: 180px;
+  padding: 25px 22px;
+
+  background: white;
+  border: 1px solid #e5edf5;
+  border-radius: 18px;
+
+  box-shadow: 0 8px 25px rgba(10, 34, 64, 0.08);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.work-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(10, 34, 64, 0.14);
+}
+
+.work-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.work-top > span {
+  color: #b8ddf2;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.work-icon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #e8f0f6;
+  color: #005a9c;
+}
+
+.work-card h3 {
+  margin: 28px 0 14px;
+
+  color: #0a2240;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.work-card p {
+  margin: 0 0 22px;
+
+  color: #526273;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.work-card a {
+  display: inline-block;
+
+  color: #07579d;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: transform 0.2s ease;
+}
+
+.work-card a:hover {
+  transform: translateX(4px);
+}
+
+.work-image {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  margin-top: 25px;
+  border-radius: 12px;
+  display: block;
+}
+
+
+@media (max-width: 900px) {
+  .work {
+    padding: 65px 5%;
+  }
+
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .work {
+    padding: 55px 20px;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .work-header {
+    margin-bottom: 30px;
+  }
+
+  .work-card {
+    min-height: 200px;
+    padding: 25px;
+  }
+
+  .work-top > span {
+    font-size: 42px;
+  }
+
+  .work-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .work-card h3 {
+    font-size: 21px;
+  }
+
+  .work-image {
+    height: 160px;
+  }
+}
+</style>

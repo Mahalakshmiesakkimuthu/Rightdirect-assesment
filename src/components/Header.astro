@@ -1,0 +1,347 @@
+---
+const { navItems, logo, workCards } = Astro.props;
+---
+
+<header>
+  <div class="header-container">
+
+    
+    <div class="logo">
+      <img src={logo?.asset?.url} alt="RightDirect" />
+    </div>
+
+    
+    <nav class="main-nav">
+      {navItems?.map((item) => (
+        item.label === "Services" ? (
+          <div class="dropdown">
+
+            <a href={item.url} class="services-link">
+              {item.label}
+            </a>
+
+            <div class="dropdown-menu">
+              {workCards?.map((card) => (
+                <a href="#">
+                  <span>{card.title}</span>
+                </a>
+              ))}
+            </div>
+
+          </div>
+        ) : (
+          <a
+  href={item.url}
+  class={item.label === "Get Started" ? "get-started" : ""}
+>
+  {item.label}
+</a>
+        )
+      ))}
+    </nav>
+
+
+    <details class="mobile-menu">
+
+      <summary class="menu-button" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </summary>
+
+      <nav class="mobile-nav">
+        {navItems?.map((item) => (
+          <a href={item.url}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+    </details>
+
+  </div>
+</header>
+
+
+<style>
+
+header {
+  width: 100%;
+  background: white;
+}
+
+
+
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 20px 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+}
+
+
+
+
+.logo img {
+  width: 150px;
+  display: block;
+}
+
+
+
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.main-nav > a,
+.services-link {
+  text-decoration: none;
+  color: #0a2240;
+
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.main-nav > a:hover,
+.services-link:hover {
+  background: #eaf3fa;
+  color: #004681;
+
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.get-started {
+  background: #004681;
+  color: white !important;
+  padding: 11px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.get-started:hover {
+  background: #004681;
+  color: white !important;
+}
+
+
+
+.dropdown {
+  position: relative;
+}
+
+.services-link {
+  display: block;
+}
+
+
+
+.dropdown-menu {
+  position: absolute;
+
+  top: 100%;
+  left: 50%;
+
+  width: 280px;
+
+  padding: 10px;
+
+  background: white;
+
+  border: 1px solid #eef2f5;
+  border-radius: 12px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translate(-50%, 8px);
+
+  transition: 0.2s ease;
+
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translate(-50%, 0);
+}
+
+
+
+.dropdown-menu a {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 14px;
+
+  text-decoration: none;
+
+  color: #0a2240;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  transition: 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background: #eaf3fa;
+  color: #004681;
+}
+
+
+.dropdown-menu a:hover .item-arrow {
+  color: #004681;
+  transform: translateX(3px);
+}
+
+
+.mobile-menu {
+  display: none;
+}
+
+
+@media (max-width: 900px) {
+
+  .header-container {
+    padding: 18px 25px;
+  }
+
+  .main-nav {
+    gap: 18px;
+  }
+
+  .main-nav > a,
+  .services-link {
+    font-size: 14px;
+  }
+
+  .logo img {
+    width: 130px;
+  }
+
+}
+
+
+
+@media (max-width: 600px) {
+
+  .header-container {
+    padding: 16px 20px;
+  }
+
+  .logo img {
+    width: 125px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+
+  .mobile-menu {
+    display: block;
+
+    position: relative;
+  }
+
+  .menu-button {
+    width: 32px;
+    height: 28px;
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    list-style: none;
+  }
+
+
+  .menu-button::-webkit-details-marker {
+    display: none;
+  }
+
+  .menu-button::marker {
+    display: none;
+  }
+
+
+  .menu-button span {
+    display: block;
+
+    width: 30px;
+    height: 3px;
+
+    background: #004681;
+
+    border-radius: 3px;
+  }
+
+
+  .mobile-nav {
+    position: absolute;
+
+    top: 42px;
+    right: 0;
+
+    width: 250px;
+
+    background: white;
+
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    border: 1px solid #eef2f5;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+    z-index: 2000;
+  }
+
+
+  .mobile-nav a {
+    padding: 12px 14px;
+
+    text-decoration: none;
+
+    color: #0a2240;
+
+    font-size: 15px;
+
+    border-radius: 6px;
+  }
+
+
+  .mobile-nav a:hover {
+    background: #eaf3fa;
+
+    color: #004681;
+  }
+
+}
+
+</style>

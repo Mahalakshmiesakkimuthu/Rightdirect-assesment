@@ -1,0 +1,103 @@
+---
+import { BriefcaseBusiness } from "lucide-astro";
+
+const { heroTitle, heroSubtitle } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container">
+
+    <div class="outer-icon">
+      <BriefcaseBusiness class="inner-icon" />
+    </div>
+
+    <h1>{heroTitle}</h1>
+    <p>{heroSubtitle}</p>
+
+  </div>
+</section>
+
+<style>
+  .hero {
+    width: 100%;
+  }
+
+  .container {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 300px;
+  padding: 45px 40px;
+
+  background: #0a2240;
+  color: white;
+  font-family: "Inter", sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.outer-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  background: #336b9a;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner-icon {
+  width: 28px;
+  height: 28px;
+  color: white;
+}
+h1 {
+  width: 100%;
+  margin: 0 0 16px;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.container p {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.6;
+}
+  @media (max-width: 768px) {
+    .container {
+      min-height: 260px;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 34px;
+    }
+
+    .container p {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      min-height: 230px;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+
+    .container p {
+      font-size: 14px;
+    }
+  }
+</style>

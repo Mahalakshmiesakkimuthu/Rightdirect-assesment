@@ -34,7 +34,7 @@ const data = await sanityClient.fetch(`
     seoTitle,
     seoDescription,
     footerDescription,
-    footerServices[]{
+footerServices[]{
   label,
   url
 },
@@ -59,6 +59,10 @@ footerAddress,
     name="description"
     content={data.seoDescription}
   />
+  <link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
 </head>
 
 <Header
@@ -100,5 +104,4 @@ body {
 * {
   font-family: inherit;
 }
-
 </style>

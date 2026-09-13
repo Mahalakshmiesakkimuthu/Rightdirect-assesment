@@ -1,0 +1,167 @@
+---
+import { Users, Wallet, Handshake } from "lucide-astro";
+
+const {
+  approachLabel,
+  approachTitle,
+  approachDescription,
+  approachCards
+} = Astro.props;
+---
+
+<div class="content">
+
+  <div class="left">
+    <p>{approachLabel}</p>
+
+    <h2 class="textt">
+      {approachTitle}
+    </h2>
+
+    <p>
+      {approachDescription}
+    </p>
+  </div>
+
+  <div class="right">
+    {approachCards?.map((card) => (
+      <div class="card">
+
+        <div class="icon-circle">
+          <div class="icon-circle">
+            {card.title === "The Right Team at the Right Time" && <Users size={24} />}
+            {card.title === "Pay Only for What Matters" && <Wallet size={24} />}
+            {card.title === "Partner-Level Support" && <Handshake size={24} />}
+          </div>
+        </div>
+
+        <h3 class="text">{card.title}</h3>
+
+      </div>
+    ))}
+  </div>
+
+</div>
+
+<style>
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 90px 60px;
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 70px;
+    align-items: center;
+  }
+
+  .left {
+    width: 100%;
+  }
+
+  .left > p:first-child {
+    margin: 0 0 18px;
+    color: #0a2240;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .textt {
+    margin: 0 0 24px;
+    color: #004681;
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 700;
+  }
+
+  .left > p:last-child {
+    margin: 0;
+    color: #526273;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card {
+    min-height: 100px;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .icon-circle {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #e7f0f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-circle svg {
+    width: 22px;
+    height: 22px;
+    color: #0065a8;
+  }
+
+  .text {
+    margin: 0;
+    padding: 0;
+    color: #004681;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .content {
+      padding: 60px 25px;
+      grid-template-columns: 1fr;
+      gap: 45px;
+    }
+
+    .textt {
+      font-size: 28px;
+    }
+
+    .card {
+      min-height: 90px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .content {
+      padding: 50px 20px;
+    }
+
+    .textt {
+      font-size: 25px;
+    }
+
+    .card {
+      padding: 0 18px;
+      gap: 15px;
+    }
+
+    .text {
+      font-size: 16px;
+    }
+  }
+</style>
+
