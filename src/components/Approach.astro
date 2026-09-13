@@ -28,11 +28,9 @@ const {
       <div class="card">
 
         <div class="icon-circle">
-          <div class="icon-circle">
             {card.title === "The Right Team at the Right Time" && <Users size={24} />}
             {card.title === "Pay Only for What Matters" && <Wallet size={24} />}
             {card.title === "Partner-Level Support" && <Handshake size={24} />}
-          </div>
         </div>
 
         <h3 class="text">{card.title}</h3>
@@ -45,14 +43,16 @@ const {
 
 <style>
   .content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 90px 60px;
-    display: grid;
-    grid-template-columns: 1fr 0.9fr;
-    gap: 70px;
-    align-items: center;
-  }
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 90px 60px;
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 70px;
+  align-items: center;
+  box-sizing: border-box;
+}
 
   .left {
     width: 100%;
@@ -131,18 +131,18 @@ const {
 
   @media (max-width: 768px) {
     .content {
-      padding: 60px 25px;
-      grid-template-columns: 1fr;
-      gap: 45px;
-    }
+  width: 100%;
+  padding: 60px 25px;
+  grid-template-columns: 1fr;
+  gap: 45px;
+  box-sizing: border-box;
+}
 
-    .textt {
-      font-size: 28px;
-    }
-
-    .card {
-      min-height: 90px;
-    }
+.left,
+.right {
+  min-width: 0;
+  width: 100%;
+}
   }
 
   @media (max-width: 480px) {
