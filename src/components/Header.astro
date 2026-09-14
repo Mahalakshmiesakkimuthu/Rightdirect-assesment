@@ -402,7 +402,6 @@ const { navItems, logo, workCards } = Astro.props;
 }
 
 
-/* GET STARTED MOBILE */
 
 .mobile-get-started {
   margin-top: 6px;
@@ -412,37 +411,6 @@ const { navItems, logo, workCards } = Astro.props;
 
   text-align: center;
 }
-
-
-/* =========================
-   TABLET
-========================= */
-
-@media screen and (max-width: 900px) {
-
-  .header-container {
-    padding: 14px 25px;
-  }
-
-  .logo img {
-    width: 135px;
-  }
-
-  .main-nav {
-    gap: 15px;
-  }
-
-  .nav-link,
-  .services-link {
-    font-size: 13px;
-  }
-
-}
-
-
-/* =========================
-   MOBILE
-========================= */
 
 @media screen and (max-width: 768px) {
 
@@ -455,37 +423,13 @@ const { navItems, logo, workCards } = Astro.props;
     width: 125px;
   }
 
-  /* Hide desktop menu */
   .main-nav {
     display: none;
   }
 
-  /* Show hamburger */
   .mobile-menu {
     display: block;
     position: relative;
-  }
-
-}
-
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
-@media screen and (max-width: 400px) {
-
-  .header-container {
-    padding: 12px 16px;
-  }
-
-  .logo img {
-    width: 115px;
-  }
-
-  .mobile-nav {
-    left: 10px;
-    right: 10px;
   }
 
 }
