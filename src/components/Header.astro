@@ -433,4 +433,30 @@ const { navItems, logo, workCards } = Astro.props;
 
 }
 
+.nav-link,
+.services-link {
+  position: relative;
+
+  color: #0a2240;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  padding: 8px 10px;
+
+  border-radius: 15px;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.nav-link:hover,
+.services-link:hover {
+  color: #004681;
+  background: #eaf3fa;
+}
 </style>
