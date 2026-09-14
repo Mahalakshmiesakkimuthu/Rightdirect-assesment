@@ -5,7 +5,6 @@ const { navItems, logo, workCards } = Astro.props;
 <header class="site-header">
   <div class="header-container">
 
-    
     <a href="/" class="logo">
       <img
         src={logo?.asset?.url}
@@ -13,7 +12,7 @@ const { navItems, logo, workCards } = Astro.props;
       />
     </a>
 
-    
+    <!-- DESKTOP NAV -->
     <nav class="main-nav">
       {navItems?.map((item) => (
         item.label === "Services" ? (
@@ -46,10 +45,13 @@ const { navItems, logo, workCards } = Astro.props;
       ))}
     </nav>
 
-    
+    <!-- MOBILE MENU -->
     <details class="mobile-menu">
 
-      <summary class="menu-button" aria-label="Open navigation menu">
+      <summary
+        class="menu-button"
+        aria-label="Open navigation menu"
+      >
         <span></span>
         <span></span>
         <span></span>
@@ -96,6 +98,10 @@ const { navItems, logo, workCards } = Astro.props;
 
 <style>
 
+/* =========================
+   HEADER
+========================= */
+
 .site-header {
   width: 100%;
   background: #ffffff;
@@ -120,13 +126,15 @@ const { navItems, logo, workCards } = Astro.props;
 }
 
 
+/* =========================
+   LOGO
+========================= */
 
 .logo {
   display: flex;
   align-items: center;
 
   text-decoration: none;
-
   flex-shrink: 0;
 }
 
@@ -136,6 +144,10 @@ const { navItems, logo, workCards } = Astro.props;
   display: block;
 }
 
+
+/* =========================
+   DESKTOP NAV
+========================= */
 
 .main-nav {
   display: flex;
@@ -155,17 +167,26 @@ const { navItems, logo, workCards } = Astro.props;
 
   white-space: nowrap;
 
-  padding: 8px 4px;
+  padding: 8px 10px;
+
+  border-radius: 15px;
 
   transition:
     color 0.25s ease,
     background 0.25s ease;
 }
 
+
+/* NAV HOVER */
+
 .nav-link:hover,
 .services-link:hover {
   color: #004681;
+  background: #eaf3fa;
 }
+
+
+/* GET STARTED */
 
 .get-started {
   background: #004681 !important;
@@ -180,6 +201,11 @@ const { navItems, logo, workCards } = Astro.props;
   background: #00365f !important;
   color: white !important;
 }
+
+
+/* =========================
+   SERVICES DROPDOWN
+========================= */
 
 .dropdown {
   position: relative;
@@ -218,7 +244,6 @@ const { navItems, logo, workCards } = Astro.props;
 .dropdown:hover .dropdown-menu {
   opacity: 1;
   visibility: visible;
-
   transform: translate(-50%, 0);
 }
 
@@ -246,9 +271,16 @@ const { navItems, logo, workCards } = Astro.props;
 }
 
 
+/* =========================
+   MOBILE MENU DEFAULT
+========================= */
+
 .mobile-menu {
   display: none;
 }
+
+
+/* HAMBURGER */
 
 .menu-button {
   width: 34px;
@@ -286,6 +318,10 @@ const { navItems, logo, workCards } = Astro.props;
   transition: 0.25s ease;
 }
 
+
+/* =========================
+   MOBILE NAV
+========================= */
 
 .mobile-nav {
   position: absolute;
@@ -336,6 +372,10 @@ const { navItems, logo, workCards } = Astro.props;
 }
 
 
+/* =========================
+   MOBILE SERVICES
+========================= */
+
 .mobile-services-list {
   padding: 0 10px 8px 20px;
 
@@ -361,6 +401,9 @@ const { navItems, logo, workCards } = Astro.props;
   color: #004681;
 }
 
+
+/* GET STARTED MOBILE */
+
 .mobile-get-started {
   margin-top: 6px;
 
@@ -371,7 +414,11 @@ const { navItems, logo, workCards } = Astro.props;
 }
 
 
-@media (max-width: 900px) {
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (max-width: 900px) {
 
   .header-container {
     padding: 14px 25px;
@@ -393,7 +440,11 @@ const { navItems, logo, workCards } = Astro.props;
 }
 
 
-@media (max-width: 700px) {
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 768px) {
 
   .header-container {
     min-height: 68px;
@@ -404,10 +455,12 @@ const { navItems, logo, workCards } = Astro.props;
     width: 125px;
   }
 
+  /* Hide desktop menu */
   .main-nav {
     display: none;
   }
 
+  /* Show hamburger */
   .mobile-menu {
     display: block;
     position: relative;
@@ -416,7 +469,11 @@ const { navItems, logo, workCards } = Astro.props;
 }
 
 
-@media (max-width: 400px) {
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media screen and (max-width: 400px) {
 
   .header-container {
     padding: 12px 16px;
@@ -433,30 +490,4 @@ const { navItems, logo, workCards } = Astro.props;
 
 }
 
-.nav-link,
-.services-link {
-  position: relative;
-
-  color: #0a2240;
-  text-decoration: none;
-
-  font-size: 14px;
-  font-weight: 500;
-
-  white-space: nowrap;
-
-  padding: 8px 10px;
-
-  border-radius: 15px;
-
-  transition:
-    color 0.25s ease,
-    background 0.25s ease;
-}
-
-.nav-link:hover,
-.services-link:hover {
-  color: #004681;
-  background: #eaf3fa;
-}
 </style>

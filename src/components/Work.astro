@@ -291,23 +291,8 @@ const { workCards } = Astro.props;
   }
 
 
- @media screen and (max-width: 1000px) {
-  .work-container {
-    padding: 65px 30px;
-  }
+ @media screen and (max-width: 768px) {
 
-  .work-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-  }
-
-  .work-card {
-    padding: 22px;
-  }
-}
-
-/* MOBILE */
-@media screen and (max-width: 600px) {
   .work-container {
     width: 100%;
     max-width: 100%;
@@ -317,8 +302,7 @@ const { workCards } = Astro.props;
   }
 
   .work-header {
-    margin: 0 0 30px;
-    text-align: center;
+    margin-bottom: 30px;
   }
 
   .work-header p {
@@ -336,7 +320,7 @@ const { workCards } = Astro.props;
     width: 100%;
     min-width: 0;
     padding: 20px;
-    border-radius: 15px;
+    box-sizing: border-box;
   }
 
   .work-number {
@@ -362,9 +346,8 @@ const { workCards } = Astro.props;
   }
 
   .work-description {
-    margin-bottom: 18px;
     font-size: 14px;
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
   .work-link {
@@ -380,77 +363,5 @@ const { workCards } = Astro.props;
     border-radius: 10px;
   }
 }
-
-@media screen and (max-width: 380px) {
-  .work-container {
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  .work-card {
-    padding: 17px;
-  }
-
-  .work-number {
-    font-size: 36px;
-  }
-
-  .work-card h3 {
-    font-size: 18px;
-  }
-
-  .work-description {
-    font-size: 13px;
-  }
-
-  .work-link {
-    font-size: 13px;
-  }
-
-  .work-image {
-    height: 160px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .work-container {
-    width: 100%;
-    padding: 50px 16px 45px;
-    box-sizing: border-box;
-  }
-
-  .work-grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .work-card {
-    width: 100%;
-    min-width: 0;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  .work-number {
-    font-size: 40px;
-  }
-
-  .work-card h3 {
-    font-size: 19px;
-  }
-
-  .work-description {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .work-image {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-  }
-}
-
 </style>
 
