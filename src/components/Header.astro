@@ -12,7 +12,6 @@ const { navItems, logo, workCards } = Astro.props;
       />
     </a>
 
-    <!-- DESKTOP NAV -->
     <nav class="main-nav">
       {navItems?.map((item) => (
         item.label === "Services" ? (
@@ -45,7 +44,6 @@ const { navItems, logo, workCards } = Astro.props;
       ))}
     </nav>
 
-    <!-- MOBILE MENU -->
     <details class="mobile-menu">
 
       <summary
@@ -98,10 +96,6 @@ const { navItems, logo, workCards } = Astro.props;
 
 <style>
 
-/* =========================
-   HEADER
-========================= */
-
 .site-header {
   width: 100%;
   background: #ffffff;
@@ -126,10 +120,6 @@ const { navItems, logo, workCards } = Astro.props;
 }
 
 
-/* =========================
-   LOGO
-========================= */
-
 .logo {
   display: flex;
   align-items: center;
@@ -144,10 +134,6 @@ const { navItems, logo, workCards } = Astro.props;
   display: block;
 }
 
-
-/* =========================
-   DESKTOP NAV
-========================= */
 
 .main-nav {
   display: flex;
@@ -177,16 +163,11 @@ const { navItems, logo, workCards } = Astro.props;
 }
 
 
-/* NAV HOVER */
-
 .nav-link:hover,
 .services-link:hover {
   color: #004681;
   background: #eaf3fa;
 }
-
-
-/* GET STARTED */
 
 .get-started {
   background: #004681 !important;
@@ -202,10 +183,6 @@ const { navItems, logo, workCards } = Astro.props;
   color: white !important;
 }
 
-
-/* =========================
-   SERVICES DROPDOWN
-========================= */
 
 .dropdown {
   position: relative;
@@ -271,16 +248,10 @@ const { navItems, logo, workCards } = Astro.props;
 }
 
 
-/* =========================
-   MOBILE MENU DEFAULT
-========================= */
-
 .mobile-menu {
   display: none;
 }
 
-
-/* HAMBURGER */
 
 .menu-button {
   width: 34px;
@@ -318,10 +289,6 @@ const { navItems, logo, workCards } = Astro.props;
   transition: 0.25s ease;
 }
 
-
-/* =========================
-   MOBILE NAV
-========================= */
 
 .mobile-nav {
   position: absolute;
@@ -372,9 +339,6 @@ const { navItems, logo, workCards } = Astro.props;
 }
 
 
-/* =========================
-   MOBILE SERVICES
-========================= */
 
 .mobile-services-list {
   padding: 0 10px 8px 20px;
@@ -412,7 +376,7 @@ const { navItems, logo, workCards } = Astro.props;
   text-align: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
 
   .header-container {
     min-height: 68px;
@@ -428,9 +392,9 @@ const { navItems, logo, workCards } = Astro.props;
   }
 
   .mobile-menu {
-    display: block;
-    position: relative;
-  }
+  display: block;
+  position: static;
+}
 
 }
 
