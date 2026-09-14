@@ -284,92 +284,90 @@ const { workCards } = Astro.props;
     box-sizing: border-box;
   }
 
+@media screen and (max-width: 1000px) {
 
-  @media screen and (max-width: 768px) {
-
-    .work-container {
-      width: 100%;
-      max-width: 100%;
-      margin: 0;
-      padding: 50px 40px 45px;
-      box-sizing: border-box;
-    }
-
-    .work-header {
-      width: 100%;
-      margin: 0 0 40px;
-      text-align: center;
-    }
-
-    .work-header p {
-      font-size: 30px;
-      line-height: 1.3;
-    }
-
-    .work-grid {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 25px;
-    }
-
-    .work-card {
-      width: 100%;
-      min-width: 0;
-      padding: 32px;
-      border-radius: 16px;
-      box-sizing: border-box;
-    }
-
-    .work-top {
-      width: 100%;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .work-number {
-      font-size: 42px;
-    }
-
-    .work-icon {
-      width: 58px;
-      height: 58px;
-      min-width: 58px;
-      flex: 0 0 58px;
-    }
-
-    .work-icon svg {
-      width: 25px;
-      height: 25px;
-    }
-
-    .work-card h3 {
-      margin: 28px 0 18px;
-      font-size: 25px;
-      line-height: 1.3;
-    }
-
-    .work-description {
-      margin: 0 0 25px;
-      font-size: 18px;
-      line-height: 1.55;
-    }
-
-    .work-link {
-      margin-top: 0;
-      font-size: 17px;
-    }
-
-    .work-image {
-      width: 100%;
-      height: 330px;
-      margin-top: 28px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-
+  .work-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 50px 40px 45px;
+    box-sizing: border-box;
   }
 
+  .work-header {
+    width: 100%;
+    margin: 0 0 40px;
+    text-align: center;
+  }
+
+  .work-header p {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+  .work-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .work-card {
+    width: 100%;
+    min-width: 0;
+    padding: 32px;
+    border-radius: 16px;
+    box-sizing: border-box;
+  }
+
+  .work-top {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .work-number {
+    font-size: 42px;
+  }
+
+  .work-icon {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    flex: 0 0 58px;
+  }
+
+  .work-icon svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .work-card h3 {
+    margin: 28px 0 18px;
+    font-size: 25px;
+    line-height: 1.3;
+  }
+
+  .work-description {
+    margin: 0 0 25px;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .work-link {
+    margin-top: 0;
+    font-size: 17px;
+  }
+
+  .work-image {
+    width: 100%;
+    height: 330px;
+    margin-top: 28px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+}
 </style>
